@@ -1,0 +1,143 @@
+@import 'tailwindcss';
+
+/*
+ * daisyUI powers the admin panel's component classes (btn, card, modal, drawer,
+ * navbar, table, …). The plugin must be registered in the project's single
+ * Tailwind entrypoint — a `@plugin` inside a secondary CSS file does not emit
+ * utilities.
+ *
+ * This is safe for the storefront: daisyUI only contributes CSS variables and
+ * component classes, it sets no global body/html resets, and the storefront
+ * uses none of its theme tokens (no `bg-base-*`, `text-primary`, etc.).
+ */
+@plugin 'daisyui' {
+	themes:
+		light --default,
+		dark --prefersdark,
+		cupcake,
+		bumblebee,
+		emerald,
+		corporate,
+		synthwave,
+		retro,
+		cyberpunk,
+		valentine,
+		halloween,
+		garden,
+		forest,
+		aqua,
+		lofi,
+		pastel,
+		fantasy,
+		wireframe,
+		black,
+		luxury,
+		dracula,
+		cmyk,
+		autumn,
+		business,
+		acid,
+		lemonade,
+		night,
+		coffee,
+		winter;
+}
+
+@theme {
+	--color-pine: #2b6d4c;
+	--color-paper-white: #fbf8f7;
+	--color-pine-dark: #17533a;
+	--color-gold: #fbe9ba;
+	--color-teal: #4b845a;
+	--color-meadow: #84a66d;
+	--color-paper: #fdf0cf;
+	--color-paper-2: #f4e8c4;
+	--color-ink: #20241f;
+	--color-butter: #ffefb3;
+	--color-green: #013e37;
+	--color-ink-soft: #565c51;
+	--color-line: rgba(32, 36, 31, 0.12);
+	--color-charcoal: #222222;
+	--color-brand-green: #0b5d1e;
+	--font-serif: 'Playfair Display', Georgia, serif;
+	--font-sans: 'Playfair Display', 'Work Sans', sans-serif;
+	--font-modern: 'Playfair Display', 'Montserrat', sans-serif;
+	--font-mono: 'Playfair Display', 'IBM Plex Mono', monospace;
+	--color-afcrc-green: #17533a;
+	--color-afcrc-yellow: #efc72f;
+	--color-afcrc-lime: #94b62c;
+	--color-afcrc-blue: #107fb8;
+}
+
+:root {
+	--about-green: var(--color-green);
+	--about-green-soft: var(--color-teal);
+	--about-yellow: var(--color-afcrc-yellow);
+	--about-blue: var(--color-afcrc-blue);
+	--about-text: var(--color-ink);
+	--about-muted: var(--color-ink-soft);
+	--about-rule: var(--color-line);
+	--about-grid-line: rgba(43, 109, 76, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--about-text: #e8ece5;
+		--about-muted: #b3bcae;
+		--about-green: #8fc9a8;
+		--about-green-soft: #a8d5bd;
+		--about-yellow: #f3d24e;
+		--about-blue: #6fc0ea;
+		--about-rule: rgba(232, 236, 229, 0.16);
+		--about-grid-line: rgba(143, 201, 168, 0.14);
+	}
+}
+
+body {
+	background-color: var(--color-paper-white);
+	color: var(--color-ink);
+	font-family: var(--font-serif);
+	overflow-x: hidden;
+}
+
+/* Playfair Display globally for all text, overriding any component-level
+   font-family (Poppins, Manrope, JetBrains Mono, Fraunces, etc.). */
+body,
+body *,
+body *::before,
+body *::after {
+	font-family: 'Playfair Display', Georgia, serif !important;
+}
+
+@layer components {
+	.eyebrow {
+		font-family: var(--font-serif);
+		font-size: 0.72rem;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+		color: var(--color-teal);
+		display: flex;
+		align-items: center;
+		gap: 10px;
+	}
+
+	.eyebrow::before {
+		content: '';
+		width: 22px;
+		height: 1px;
+		background: var(--color-teal);
+		display: inline-block;
+	}
+}
+
+.reveal {
+	opacity: 0;
+	transform: translateY(28px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	* {
+		animation: none !important;
+		transition: none !important;
+	}
+}
